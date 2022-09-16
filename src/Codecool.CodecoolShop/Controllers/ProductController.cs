@@ -9,25 +9,39 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Microsoft.Extensions.Configuration;
+using Codecool.CodecoolShop.Daos.Implementations.Database;
+using Microsoft.AspNetCore.Http;
 
 namespace Codecool.CodecoolShop.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
-        private readonly ILogger<ProductController> _logger;
-        public ProductService ProductService { get; set; }
-
-        public ProductController(ILogger<ProductController> logger)
+        public ProductController(ILogger<ProductController> logger, IConfiguration config) : base(logger, config)
         {
-            _logger = logger;
-            ProductService = new ProductService(
-                ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
         }
 
         public IActionResult Index()
         {
-            var products = ProductService.GetProductsForCategory(1);
+            var products = new ProductDaoDatabase(_config).GetAll();
+            var category = new ProductCategoryDaoDatabase(_config).GetAll();
+            var supplier = new SupplierDaoDatabase(_config).GetAll();
+            if (_config == null)
+            {
+                category = ProductCategoryDaoMemory.GetInstance().GetAll();
+                products = ProductDaoMemory.GetInstance().GetAll();
+                supplier = SupplierDaoMemory.GetInstance().GetAll();
+            }
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                var userId = new UserDaoDatabase(_config).GetId(HttpContext.Session.GetString("UserName"));
+                var carts = new CartDaoDatabase(_config).GetByUserId(userId);
+                foreach (Product product in products) {
+                    product.IsAvailable = carts.Where(x => x.product.Id == product.Id).Select(x => x.amount).FirstOrDefault() < product.Amount;
+                        }
+            }
+            ViewData["category"] = category;
+            ViewData["supplier"] = supplier;
             return View(products.ToList());
         }
 

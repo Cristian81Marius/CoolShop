@@ -1,0 +1,33 @@
+﻿@model List<Codecool.CodecoolShop.Models.Product>
+@*@{
+    List<Cart> cart = (List<Cart>)ViewData["CartAmount"];
+}*@
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@foreach (var element in Model){      
+        <div class="col-lg-4 col-lg-4" style="display: inline-block; width: 350px; height: 600px">
+            <div class="card" data_id="@element.Id">
+                <img src="@(element.ImageUrl)" style="height: 150px; width: 150px; align-self: center; padding-top: 10px">
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        @element.Name
+                    </h5>
+                    <p class="card-text">@element.Description.</p>
+                    <p class="card-text">Category: @element.ProductCategory.Name</p>
+                    <p class="card-text">Supplier: @element.Supplier.Name</p>
+                    <p class="card-text">Amount: @element.Amount</p>
+                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                    <!--<input onclick="AddToCart(@element.Id)" type="button" class="btn btn-primary" value="Add To Cart">-->
+                    @if(HttpContextAccessor.HttpContext.Session.GetString("UserName") != null && (@element.Amount > 0) && @element.IsAvailable)
+                            {
+                            <a type="button" class="btn btn-primary" style="float: bottom" asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@element.Id" >Add To Cart</a>
+                            }
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+
+    </div>

@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+
+
+<div class="list_and_sort">
+<h3>Login to see more detail!</h3>
+<form asp-action="Login", method="post">
+<input id="Email" name="Email" type="email" placeholder="Enter your email" class="form-control" required><br>
+<input id="Password" name="Password" type="password" placeholder="Enter your password" class="form-control" required><br>
+    <button type="submit" class="btn btn-dark">LOGIN</button><br>
+    </form>
+</div>  
+
+<div>
+    @if (ViewBag.ErrorMsg == null)
+    {
+        <span> @ViewBag.ErrorMsg</span>
+    }
+</div>

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Models;
@@ -24,6 +25,12 @@ namespace Codecool.CodecoolShop.Services
         {
             ProductCategory category = this.productCategoryDao.Get(categoryId);
             return this.productDao.GetBy(category);
+        }
+
+        public IEnumerable<Product> GetProductsForSupplier(int supplierId)
+        {
+            ProductCategory supplier = this.productCategoryDao.Get(supplierId);
+            return this.productDao.GetBy(supplier);
         }
     }
 }

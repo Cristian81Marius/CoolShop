@@ -1,13 +1,17 @@
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 using Codecool.CodecoolShop.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {
     class ProductCategoryDaoMemory : IProductCategoryDao
     {
-        private List<ProductCategory> data = new List<ProductCategory>();
+        public List<ProductCategory> data = new List<ProductCategory>();
         private static ProductCategoryDaoMemory instance = null;
-
         private ProductCategoryDaoMemory()
         {
         }
@@ -42,5 +46,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         {
             return data;
         }
+
+
     }
 }

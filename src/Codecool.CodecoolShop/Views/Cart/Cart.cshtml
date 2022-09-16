@@ -1,0 +1,37 @@
+﻿@model List<Codecool.CodecoolShop.Models.Cart>
+@{
+    float totalprice = 0;
+    foreach(var element in Model)
+    {   
+        totalprice = totalprice + (float)(@element.product.DefaultPrice * @element.amount);
+    }
+}
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Supplaier</th>
+                <th>Unit Price</th>
+                <th>Subtotal Price</th>
+                <th>Amount</th>
+            </tr>
+            @foreach (var element in Model)
+            {
+            <tr>
+                <td><img src="@element.product.ImageUrl" style="height: 40px; width: 40px;"></td>
+                <td>@element.product.Name</td>
+                <td>@element.product.Description</td>
+                <td>@element.product.ProductCategory.Name</td>
+                <td>@element.product.Supplier.Name</td>
+                <th>@element.product.DefaultPrice.ToString("C2")</th>
+                <th>@((@element.product.DefaultPrice*@element.amount).ToString("C2"))</th>
+                <th>@element.amount</th>
+                <th><a type="button" class="btn btn-danger" style="float: bottom" asp-area="" asp-controller="Cart" asp-action="DeleteFromCart" asp-route-id="@element.product.Id" >Delete From Cart</a></th>
+            </tr>
+            }
+        </table>
+<a type="button" onclick="AddPersonalData(@totalprice)" class="btn btn-success" style="float: bottom" asp-area="" asp-controller="Cart" asp-action="BuyProducts" asp-route-id=""> Pay @totalprice.ToString("C2") </a>
+
+    
