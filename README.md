@@ -29,5 +29,11 @@
   <li>Filters for easier navigation</li>
   <li>A welcoming and visually appealing design</li>
  </ul>
+<p>
+<img src="https://user-images.githubusercontent.com/92048815/217941418-58ed6c03-f47c-4c5f-8c73-09792aed4251.png" alt="a" height="320" width="400">
+<img src="https://user-images.githubusercontent.com/92048815/217941289-ebecb742-9ba6-40a2-a450-0ba6ccc16f8e.png" alt="b" height="320" width="400">
+</p>
+
+
 <h2>Getting Started</h2>
 <p>To run the application, simply clone the repository and open it in Visual Studio. Ensure that you have the Microsoft SQL Server installed and configured. Once the solution is loaded, you can run the application by clicking the "Start" button or pressing F5.</p>
