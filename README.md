@@ -3,7 +3,11 @@
 <p>This web application was created for the purpose of selling board games. It was developed using the ASP.NET C# MVC and Microsoft SQL modules, which provide a solid framework for building web applications and managing the database.</p>
 
 <h2>Technology Stack</h2>
-
+<p>
+    <img src="https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png" alt="Visual Studio Logo" height="42" width="70">
+    <img src="https://upload.wikimedia.org/wikipedia/de/8/8c/Microsoft_SQL_Server_Logo.svg" alt="MicrosoftSQL" height="42" width="52">
+    <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-4.svg" alt="Bootstrap Logo" height="42" width="52">
+</p>
 <ul>
   <li>ASP.NET C# MVC</li>
   <li>Microsoft SQL Server</li>
