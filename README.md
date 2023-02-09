@@ -33,9 +33,9 @@
   <li>Filters for easier navigation</li>
   <li>A welcoming and visually appealing design</li>
  </ul>
-<h3 align="center">Main page of the products  </h3>
+<h3 align="right">Main page of the products  </h3>
 <img src="https://user-images.githubusercontent.com/92048815/217941418-58ed6c03-f47c-4c5f-8c73-09792aed4251.png" alt="a">
-<h3 align="center">Shopping cart</h3>
+<h3 align="right">Shopping cart</h3>
 <img src="https://user-images.githubusercontent.com/92048815/217941938-a3496350-317b-494c-9993-4de46ab5233a.png" alt="b">
 
 
